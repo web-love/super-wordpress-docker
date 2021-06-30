@@ -73,9 +73,3 @@ RUN { \
 		echo 'ignore_repeated_source = Off'; \
 		echo 'html_errors = Off'; \
 	} > /usr/local/etc/php/conf.d/error-logging.ini
-
-# Update apt before installing nginx
-RUN apt-get update
-
-# Install nginx and echo yes to yes/no install questions
-RUN yes | apt-get install nginx
