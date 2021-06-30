@@ -24,7 +24,7 @@ RUN set -ex; \
 		libpng-dev \
 	; \
 	\
-	docker-php-ext-configure gd --with-freetype --with-jpeg --with-png \
+	docker-php-ext-configure gd --with-freetype --with-jpeg \
 	docker-php-ext-install \
 		bcmath \
 		exif \
