@@ -22,19 +22,23 @@ RUN set -ex; \
 		libjpeg-dev \
 		libmagickwand-dev \
 		libpng-dev \
+		libzip-dev \
 	; \
 	\
-	docker-php-ext-configure gd --with-freetype --with-jpeg \
-	docker-php-ext-install \
+	docker-php-ext-configure gd \
+		--with-freetype \
+		--with-jpeg \
+	; \
+	docker-php-ext-install -j "$(nproc)" \
 		bcmath \
 		exif \
 		gd \
 		mysqli \
-		opcache \
 		zip \
 	; \
 	pecl install imagick-3.4.4; \
 	docker-php-ext-enable imagick; \
+	rm -r /tmp/pear; \
 	\
 # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
 	apt-mark auto '.*' > /dev/null; \
